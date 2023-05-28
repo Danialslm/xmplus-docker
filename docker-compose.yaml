@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  www:
+    build: .
+    volumes:
+      - './www:/www'
+      - './wwwlogs:/wwwlogs'
+      - './caddy.conf:/run/caddy/caddy.conf'
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+
+  mysql:
+    image: mysql:latest
+    volumes:
+      - './mysql:/var/lib/mysql'
+    restart: always
+    env_file:
+      - ./.env
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
+      - "8080:80"
+    env_file:
+      - ./.env

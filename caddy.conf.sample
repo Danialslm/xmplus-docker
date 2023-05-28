@@ -1,0 +1,18 @@
+http://<host> {
+    root /www/public
+    log /wwwlogs/caddy.log
+    fastcgi / /tmp/php-cgi.sock php
+    rewrite {
+        to {path} {path}/ /index.php?{query}
+    }
+}
+
+https://<host> {
+    tls <email>
+    root /www/public
+    log /wwwlogs/caddy.log
+    fastcgi / /tmp/php-cgi.sock php
+    rewrite {
+        to {path} {path}/ /index.php?{query}
+    }
+}

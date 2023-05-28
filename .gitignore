@@ -1,0 +1,6 @@
+mysql/*
+www/*
+wwwlogs
+caddy.conf
+.env
+!.gitkeep
